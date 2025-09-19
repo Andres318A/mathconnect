@@ -1,0 +1,40 @@
+.home-background {
+  min-height: calc(100vh - 60px);
+  background: #2e6a38 url("../assets/bg-math.png") repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 85vh;
+}
+
+.home-title {
+  display: block;
+  text-align: center;
+  font-size: 4vw;
+  color: #000;
+  font-weight: bold;
+  text-shadow: 3px 3px 10px #fff, 5px 5px 15px #444a;
+  line-height: 1.1;
+  margin-right: 3vw;
+}
+
+.home-info {
+  width: 34vw;
+  min-width: 370px;
+  background: #b7ebbb;
+  border-radius: 30px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 10px #0002;
+  font-size: 1.19vw;
+  color: #111;
+  font-family: sans-serif;
+}
