@@ -1,0 +1,257 @@
+.home-container {
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url('../assets/images/background-math.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+.home-header {
+  position: relative;
+  z-index: 2;
+  padding: 25px 50px;
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  letter-spacing: -1px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-login,
+.btn-register {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-login {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.btn-login:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.btn-register {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.btn-register:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.home-main {
+  position: relative;
+  z-index: 2;
+  padding: 0 50px;
+  min-height: calc(100vh - 140px);
+  width: 100%;
+  display: flex;
+  align-items: center; /* Centrar verticalmente TODO el contenido */
+  justify-content: center;
+}
+
+.welcome-section {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center; /* Centrar verticalmente los elementos */
+  justify-content: space-between; /* Separar título y caja de texto */
+  gap: 100px;
+  min-height: 400px;
+}
+
+/* Título a la izquierda */
+.welcome-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.welcome-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #000000; /* NEGRO como en el mockup */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Sombra blanca para contraste */
+  line-height: 1.1;
+  letter-spacing: -1px;
+  text-align: left;
+  margin: 0;
+}
+
+/* Caja de texto a la derecha */
+.description-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.description-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  max-width: 550px;
+  width: 100%;
+}
+
+.description-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #2c2c2c;
+  margin: 0;
+  text-align: justify;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #2E7D32;
+}
+
+/* Responsividad */
+@media (max-width: 1200px) {
+  .home-container {
+    background-attachment: scroll;
+  }
+  
+  .app-title {
+    font-size: 2.5rem;
+  }
+  
+  .welcome-title {
+    font-size: 3rem;
+  }
+  
+  .welcome-section {
+    gap: 60px;
+  }
+  
+  .home-main {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 968px) {
+  .welcome-section {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .welcome-text,
+  .description-container {
+    justify-content: center;
+  }
+  
+  .welcome-title {
+    text-align: center;
+  }
+  
+  .description-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-header {
+    padding: 20px 30px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .app-title {
+    font-size: 2.2rem;
+  }
+  
+  .header-buttons {
+    justify-content: center;
+  }
+  
+  .home-main {
+    padding: 20px 30px;
+  }
+  
+  .welcome-title {
+    font-size: 2.5rem;
+  }
+  
+  .description-card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-header {
+    padding: 15px 20px;
+  }
+  
+  .app-title {
+    font-size: 1.8rem;
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+  }
+  
+  .btn-login,
+  .btn-register {
+    padding: 10px 22px;
+    font-size: 1rem;
+  }
+  
+  .description-text {
+    font-size: 0.95rem;
+  }
+  
+  .description-card {
+    padding: 25px;
+  }
+  
+  .home-main {
+    padding: 15px 20px;
+  }
+}
