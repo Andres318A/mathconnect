@@ -70,26 +70,6 @@ const Register = () => {
     if (error) setError(''); // Limpiar error al escribir
   };
 
-  // DEBUG: enviar POST manualmente desde el navegador para verificar conectividad
-  const debugPost = async () => {
-    try {
-      console.log('DEBUG: intentando POST manual a', `${API_URL}/auth/register`);
-      const res = await fetch(`${API_URL}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: userData.nombre, email: userData.email, password: userData.password })
-      });
-      const text = await res.text();
-      let data;
-      try { data = text ? JSON.parse(text) : null; } catch (e) { data = text; }
-      console.log('DEBUG POST response', { ok: res.ok, status: res.status, data });
-      alert('DEBUG: petición enviada. Revisa la consola y la pestaña Network.');
-    } catch (err) {
-      console.error('DEBUG POST error:', err);
-      alert('DEBUG POST error: ' + (err.message || err));
-    }
-  };
-
   return (
     <div className="register-container">
       {/* Header igual al login */}
@@ -174,15 +154,6 @@ const Register = () => {
                 disabled={loading}
               >
                 {loading ? 'Registrando...' : 'Registrar'}
-              </button>
-
-              {/* Botón debug: enviar POST manual (no desplegar en producción) */}
-              <button
-                type="button"
-                onClick={debugPost}
-                style={{ marginTop: 10, background: 'rgba(255,200,200,0.9)', border: '2px solid #f88' }}
-              >
-                Prueba POST (debug)
               </button>
 
               {/* Link para iniciar sesión */}
