@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { authService } from '../services/authService';
 import './Register.css';
 
 const Register = () => {
@@ -18,17 +19,22 @@ const Register = () => {
     setError('');
 
     try {
-      // Aquí conectaremos con el backend más adelante
-      console.log('Register:', userData);
-      
-      // Simulación de registro exitoso
-      setTimeout(() => {
+      // Llamar al backend para registrar usuario
+      const payload = {
+        name: userData.nombre,
+        email: userData.email,
+        password: userData.password
+      };
+      const response = await authService.register(payload);
+      if (response.success) {
         setLoading(false);
         navigate('/login'); // Redirigir al login después del registro
-      }, 1000);
-
+      } else {
+        setError(response.message || 'Error en el registro.');
+        setLoading(false);
+      }
     } catch (error) {
-      setError('Error al registrarse. Intenta nuevamente.');
+      setError(error.message || 'Error al registrarse. Intenta nuevamente.');
       setLoading(false);
     }
   };

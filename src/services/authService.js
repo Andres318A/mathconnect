@@ -1,6 +1,22 @@
 import { api } from './api';
 
 export const authService = {
+    async register(userData) {
+        try {
+            // Enviar datos al endpoint de registro
+            const res = await api.post('/auth/register', userData);
+            if (!res.ok) {
+                const errMsg = res.data && res.data.message ? res.data.message : 'Error en el registro';
+                throw new Error(errMsg);
+            }
+            return res.data;
+        } catch (error) {
+            if (error.message === 'Failed to fetch') {
+                throw new Error('No se puede conectar con el servidor. Verifica tu conexión.');
+            }
+            throw error;
+        }
+    },
     async login(credentials) {
         try {
             console.log('Intentando login con:', credentials);
