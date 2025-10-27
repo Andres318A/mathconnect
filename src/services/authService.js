@@ -4,19 +4,19 @@ export const authService = {
     async login(credentials) {
         try {
             console.log('Intentando login con:', credentials);
-            const response = await api.post('/auth/login', credentials);
+            // `api.post` devuelve ahora { ok, status, data }
+            const res = await api.post('/auth/login', credentials);
+            console.log('Respuesta del api:', res);
 
-            console.log('Respuesta del servidor:', response.status);
-            
-            if (!response.ok) {
-                if (response.status === 404) {
+            if (!res.ok) {
+                if (res.status === 404) {
                     throw new Error('No se puede conectar con el servidor');
                 }
-                const error = await response.json();
-                throw new Error(error.message || 'Error en la autenticación');
+                const errMsg = res.data && res.data.message ? res.data.message : 'Error en la autenticación';
+                throw new Error(errMsg);
             }
 
-            const data = await response.json();
+            const data = res.data;
             console.log('Datos recibidos:', data);
             
             // Extraer token y usuario de la respuesta
