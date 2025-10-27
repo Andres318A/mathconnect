@@ -16,40 +16,47 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Debug: asegurar que el handler se ejecuta
-    if (typeof window !== 'undefined') {
-      try { window.alert('handleSubmit llamado — enviando registro'); } catch (e) { console.log('alert falló', e); }
-    }
     setLoading(true);
     setError('');
 
     try {
-      // Llamar al backend para registrar usuario
-      const payload = {
-        name: userData.nombre,
-        email: userData.email,
-        password: userData.password
-      };
-      console.log('Enviando registro al backend:', payload);
-      const response = await authService.register(payload);
-      console.log('Respuesta de register:', response);
+      // Enviar petición directamente usando fetch (método que ya funciona)
+      console.log('Enviando registro al backend:', userData);
+      const res = await fetch(`${API_URL}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: userData.nombre,
+          email: userData.email,
+          password: userData.password
+        })
+      });
 
-      // Si el backend devolvió token ya fue guardado por authService.register
-      const returned = response.data || response;
-      const payloadReturned = returned.data || returned;
-      const hasToken = payloadReturned && payloadReturned.token;
+      const text = await res.text();
+      let response;
+      try {
+        response = text ? JSON.parse(text) : null;
+      } catch (e) {
+        response = text;
+      }
+      console.log('Respuesta del backend:', response);
 
       setLoading(false);
-      if (response.success) {
-        if (hasToken) {
+      if (res.ok && response.success) {
+        // Guardar token si el backend lo devuelve
+        const data = response.data || response;
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
           // Si hay token, navegar al dashboard (usuario ya autenticado)
           navigate('/dashboard');
         } else {
-          // Si no hay token, mantener flujo mostrado: ir a login
+          // Si no hay token, ir a login
           navigate('/login');
         }
       } else {
-        setError(response.message || 'Error en el registro.');
+        const message = response?.message || 'Error en el registro.';
+        setError(message);
       }
     } catch (error) {
       console.error('Error en handleSubmit (register):', error);
