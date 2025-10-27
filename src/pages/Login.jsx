@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { authService } from '../services/authService';
 import './Login.css';
 
 const Login = () => {
@@ -14,17 +15,23 @@ const Login = () => {
     setError('');
 
     try {
-      // Aquí conectaremos con el backend más adelante
-      console.log('Login:', credentials);
+      console.log('Iniciando login con:', credentials);
+      const response = await authService.login(credentials);
+      console.log('Login exitoso:', response);
       
-      // Simulación de login exitoso
-      setTimeout(() => {
+      if (response.success) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        console.log('Usuario autenticado:', user);
         setLoading(false);
         navigate('/dashboard');
-      }, 1000);
-
+      } else {
+        console.error('Respuesta sin éxito:', response);
+        setError('Error en la autenticación. Por favor, intenta de nuevo.');
+        setLoading(false);
+      }
     } catch (error) {
-      setError('Error al iniciar sesión. Verifica tus credenciales.');
+      console.error('Error en login:', error);
+      setError(error.message || 'Error al iniciar sesión. Verifica tus credenciales.');
       setLoading(false);
     }
   };

@@ -32,28 +32,28 @@ const Help = () => {
 
       <div className="features-grid">
         <div className="feature-card">
-          <div className="feature-icon">📊</div>
+          <div className="feature-icon"></div>
           <h3>Límites Interactivos</h3>
           <p>Explora diferentes tipos de límites con visualizaciones dinámicas y ejemplos prácticos.</p>
           <Link to="/limits" className="feature-link">Ir a Límites</Link>
         </div>
 
         <div className="feature-card">
-          <div className="feature-icon">📈</div>
+          <div className="feature-icon"></div>
           <h3>Continuidad de Funciones</h3>
           <p>Comprende la continuidad puntual, en intervalos abiertos y cerrados con gráficos interactivos.</p>
           <Link to="/continuity" className="feature-link">Ir a Continuidad</Link>
         </div>
 
         <div className="feature-card">
-          <div className="feature-icon">🎯</div>
+          <div className="feature-icon"></div>
           <h3>Ejercicios Prácticos</h3>
           <p>Practica con ejercicios paso a paso y simulaciones que refuerzan tu aprendizaje.</p>
           <button className="feature-link" onClick={() => setActiveSection('ejercicios')}>Ver Ejercicios</button>
         </div>
 
         <div className="feature-card">
-          <div className="feature-icon">💡</div>
+          <div className="feature-icon"></div>
           <h3>Tutoriales</h3>
           <p>Sigue nuestros tutoriales detallados para dominar cada concepto matemático.</p>
           <button className="feature-link" onClick={() => setActiveSection('tutoriales')}>Ver Tutoriales</button>
@@ -219,7 +219,7 @@ const Help = () => {
       
       <div className="tutorials-list">
         <div className="tutorial-item">
-          <h3>🎯 Tutorial 1: Tu Primer Límite</h3>
+          <h3>Tutorial 1: Tu Primer Límite</h3>
           <p>Aprende los conceptos básicos calculando lim<sub>x→2</sub> (x² - 4)/(x - 2)</p>
           <div className="tutorial-steps">
             <ol>
@@ -232,7 +232,7 @@ const Help = () => {
         </div>
 
         <div className="tutorial-item">
-          <h3>📊 Tutorial 2: Límites Laterales</h3>
+          <h3>Tutorial 2: Límites Laterales</h3>
           <p>Comprende cuándo un límite no existe usando f(x) = |x|/x</p>
           <div className="tutorial-steps">
             <ol>
@@ -245,7 +245,7 @@ const Help = () => {
         </div>
 
         <div className="tutorial-item">
-          <h3>🔄 Tutorial 3: Funciones Continuas</h3>
+          <h3>Tutorial 3: Funciones Continuas</h3>
           <p>Explora la continuidad de f(x) = x² en un punto</p>
           <div className="tutorial-steps">
             <ol>
@@ -258,7 +258,7 @@ const Help = () => {
         </div>
 
         <div className="tutorial-item">
-          <h3>🎲 Tutorial 4: Discontinuidades</h3>
+          <h3>Tutorial 4: Discontinuidades</h3>
           <p>Identifica discontinuidades usando f(x) = 1/x</p>
           <div className="tutorial-steps">
             <ol>
@@ -271,7 +271,7 @@ const Help = () => {
         </div>
 
         <div className="tutorial-item">
-          <h3>🌟 Tutorial 5: Límites Trigonométricos</h3>
+          <h3>Tutorial 5: Límites Trigonométricos</h3>
           <p>Explora el límite fundamental lim<sub>x→0</sub> sin(x)/x = 1</p>
           <div className="tutorial-steps">
             <ol>
@@ -299,7 +299,7 @@ const Help = () => {
 
       <div className="exercise-categories">
         <div className="exercise-category">
-          <h2>🎯 Ejercicios de Límites</h2>
+          <h2>Ejercicios de Límites</h2>
           
           <div className="exercise-item">
             <h4>Ejercicio 1: Límite Básico</h4>
@@ -331,7 +331,7 @@ const Help = () => {
         </div>
 
         <div className="exercise-category">
-          <h2>📈 Ejercicios de Continuidad</h2>
+          <h2>Ejercicios de Continuidad</h2>
           
           <div className="exercise-item">
             <h4>Ejercicio 1: Continuidad Puntual</h4>
@@ -492,7 +492,7 @@ const Help = () => {
                   className={`help-nav-item ${activeSection === 'inicio' ? 'active' : ''}`}
                   onClick={() => setActiveSection('inicio')}
                 >
-                  🏠 Inicio
+                  Inicio
                 </button>
               </li>
               <li>
@@ -500,7 +500,7 @@ const Help = () => {
                   className={`help-nav-item ${activeSection === 'limites' ? 'active' : ''}`}
                   onClick={() => setActiveSection('limites')}
                 >
-                  📊 Guía de Límites
+                  Guía de Límites
                 </button>
               </li>
               <li>
@@ -508,7 +508,7 @@ const Help = () => {
                   className={`help-nav-item ${activeSection === 'continuidad' ? 'active' : ''}`}
                   onClick={() => setActiveSection('continuidad')}
                 >
-                  📈 Guía de Continuidad
+                  Guía de Continuidad
                 </button>
               </li>
               <li>
@@ -516,7 +516,7 @@ const Help = () => {
                   className={`help-nav-item ${activeSection === 'tutoriales' ? 'active' : ''}`}
                   onClick={() => setActiveSection('tutoriales')}
                 >
-                  🎓 Tutoriales
+                  Tutoriales
                 </button>
               </li>
               <li>
@@ -524,7 +524,7 @@ const Help = () => {
                   className={`help-nav-item ${activeSection === 'ejercicios' ? 'active' : ''}`}
                   onClick={() => setActiveSection('ejercicios')}
                 >
-                  💪 Ejercicios
+                  Ejercicios
                 </button>
               </li>
               <li>
@@ -532,7 +532,7 @@ const Help = () => {
                   className={`help-nav-item ${activeSection === 'preguntas' ? 'active' : ''}`}
                   onClick={() => setActiveSection('preguntas')}
                 >
-                  ❓ Preguntas Frecuentes
+                  Preguntas Frecuentes
                 </button>
               </li>
             </ul>
