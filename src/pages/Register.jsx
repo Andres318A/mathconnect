@@ -15,6 +15,10 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Debug: asegurar que el handler se ejecuta
+    if (typeof window !== 'undefined') {
+      try { window.alert('handleSubmit llamado — enviando registro'); } catch (e) { console.log('alert falló', e); }
+    }
     setLoading(true);
     setError('');
 
