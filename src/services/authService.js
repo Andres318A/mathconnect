@@ -9,7 +9,21 @@ export const authService = {
                 const errMsg = res.data && res.data.message ? res.data.message : 'Error en el registro';
                 throw new Error(errMsg);
             }
-            return res.data;
+            // Normalizar retorno y guardar token/usuario si el backend lo devuelve
+            const data = res.data;
+            const payload = data.data || data;
+            const { token, user } = payload || {};
+
+            if (token) {
+                try {
+                    localStorage.setItem('token', token);
+                    if (user) localStorage.setItem('user', JSON.stringify(user));
+                } catch (e) {
+                    console.warn('No se pudo guardar token en localStorage:', e);
+                }
+            }
+
+            return data;
         } catch (error) {
             if (error.message === 'Failed to fetch') {
                 throw new Error('No se puede conectar con el servidor. Verifica tu conexión.');

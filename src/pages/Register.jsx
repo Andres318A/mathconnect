@@ -25,15 +25,29 @@ const Register = () => {
         email: userData.email,
         password: userData.password
       };
+      console.log('Enviando registro al backend:', payload);
       const response = await authService.register(payload);
+      console.log('Respuesta de register:', response);
+
+      // Si el backend devolvió token ya fue guardado por authService.register
+      const returned = response.data || response;
+      const payloadReturned = returned.data || returned;
+      const hasToken = payloadReturned && payloadReturned.token;
+
+      setLoading(false);
       if (response.success) {
-        setLoading(false);
-        navigate('/login'); // Redirigir al login después del registro
+        if (hasToken) {
+          // Si hay token, navegar al dashboard (usuario ya autenticado)
+          navigate('/dashboard');
+        } else {
+          // Si no hay token, mantener flujo mostrado: ir a login
+          navigate('/login');
+        }
       } else {
         setError(response.message || 'Error en el registro.');
-        setLoading(false);
       }
     } catch (error) {
+      console.error('Error en handleSubmit (register):', error);
       setError(error.message || 'Error al registrarse. Intenta nuevamente.');
       setLoading(false);
     }
